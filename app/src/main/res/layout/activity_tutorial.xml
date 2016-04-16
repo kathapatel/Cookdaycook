@@ -91,6 +91,7 @@
             android:textColor="#b7102f"
             android:textSize="15dp"
             android:id="@+id/skip"
+            android:clickable="true"
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"
             android:layout_alignTop="@+id/b1"

@@ -1,23 +1,39 @@
 package com.material.katha.cookdaycook;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class tutorial extends Activity {
     private ViewFlipper viewFlipper;
     private float lastX;
-    ImageButton b1,b2,b3;
+    ImageButton b1, b2, b3;
+    TextView skip;
+    Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
         viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
-        b1=(ImageButton)findViewById(R.id.b1);
-        b2=(ImageButton)findViewById(R.id.b2);
+        b1 = (ImageButton) findViewById(R.id.b1);
+        b2 = (ImageButton) findViewById(R.id.b2);
         b1.setImageResource(R.mipmap.ic_radio_button_checked_black_24dp);
+        skip = (TextView) findViewById(R.id.skip);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     // Using the following method, we will handle all screen swaps.

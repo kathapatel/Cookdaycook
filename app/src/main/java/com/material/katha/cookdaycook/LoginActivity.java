@@ -1,10 +1,14 @@
 package com.material.katha.cookdaycook;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,12 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
@@ -48,8 +46,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     private boolean is_signInBtn_clicked;
     private int request_code;
     ProgressDialog progress_dialog;
-    CallbackManager callbackManager;
-    LoginButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

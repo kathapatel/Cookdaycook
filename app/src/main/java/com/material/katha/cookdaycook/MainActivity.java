@@ -15,6 +15,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -49,22 +51,27 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-       // setupTabIcons();
 
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new OneFragment(), "Breakfast");
+        adapter.addFragment(new TwoFragment(), "Lunch");
+        adapter.addFragment(new ThreeFragment(), "Dinner");
+        viewPager.setAdapter(adapter);
     }
 //    private void setupTabIcons() {
 //        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
 //        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
 //        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
 //    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Featured");
-        adapter.addFragment(new TwoFragment(), "Most Buy");
-        adapter.addFragment(new ThreeFragment(), "Top Rated");
-        viewPager.setAdapter(adapter);
-    }
+public boolean onCreateOptionsMenu(Menu menu)
+{
+    MenuInflater menuInflater = getMenuInflater();
+    menuInflater.inflate(R.menu.main_menu, menu);
+    return true;
+}
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
