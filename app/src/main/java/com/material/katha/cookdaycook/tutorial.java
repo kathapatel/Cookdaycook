@@ -30,7 +30,7 @@ public class tutorial extends Activity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, MainActivity.class);
+                Intent i = new Intent(context, LoginActivity.class);
                 startActivity(i);
             }
         });

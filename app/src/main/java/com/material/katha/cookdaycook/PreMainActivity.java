@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import android.os.Handler;
 
+import com.firebase.client.Firebase;
+
 /**
  * Created by rajiv on 3/9/2016.
  */
@@ -31,7 +33,7 @@ public class PreMainActivity extends Activity {
         else{
             new Handler().postDelayed(new Runnable() {
                 public void run() {
-                    final Intent i = new Intent(getBaseContext(), MainActivity.class);
+                    final Intent i = new Intent(getBaseContext(), LoginActivity.class);
                     PreMainActivity.this.startActivity(i);
                     PreMainActivity.this.finish();
                 }

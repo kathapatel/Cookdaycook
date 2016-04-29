@@ -119,8 +119,8 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     private void setBtnClickListeners() {
         // Button listeners
         signIn_btn.setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.disconnect_button).setOnClickListener(this);
+        //findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //findViewById(R.id.disconnect_button).setOnClickListener(this);
     }
 
     protected void onStart() {
@@ -142,27 +142,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         }
     }
 
-//@Override
-//public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//        }
-//
-//@Override
-//public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//        return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//        }
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
@@ -213,7 +192,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         // Get user's information and set it into the layout
         getProfileInfo();
         // Update the UI after signin
-        changeUI(true);
+        //changeUI(true);
 
     }
 
@@ -230,16 +209,16 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                 Toast.makeText(this, "start sign process", Toast.LENGTH_SHORT).show();
                 gPlusSignIn();
                 break;
-            case R.id.sign_out_button:
-                Toast.makeText(this, "Sign Out from G+", Toast.LENGTH_LONG).show();
-                gPlusSignOut();
-
-                break;
-            case R.id.disconnect_button:
-                Toast.makeText(this, "Revoke Access from G+", Toast.LENGTH_LONG).show();
-                gPlusRevokeAccess();
-
-                break;
+//            case R.id.sign_out_button:
+//                Toast.makeText(this, "Sign Out from G+", Toast.LENGTH_LONG).show();
+//                gPlusSignOut();
+//
+//                break;
+//            case R.id.disconnect_button:
+//                Toast.makeText(this, "Revoke Access from G+", Toast.LENGTH_LONG).show();
+//                gPlusRevokeAccess();
+//
+//                break;
         }
     }
 
@@ -341,18 +320,23 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         String personName = currentPerson.getDisplayName();
         String personPhotoUrl = currentPerson.getImage().getUrl();
         String email = Plus.AccountApi.getAccountName(google_api_client);
-        TextView user_name = (TextView) findViewById(R.id.userName);
-        user_name.setText("Name: " + personName);
-        TextView gemail_id = (TextView) findViewById(R.id.emailId);
-        gemail_id.setText("Email Id: " + email);
-        TextView dob = (TextView) findViewById(R.id.dob);
-        dob.setText("DOB: " + currentPerson.getBirthday());
-        TextView tag_line = (TextView) findViewById(R.id.tag_line);
-        tag_line.setText("Tag Line: " + currentPerson.getTagline());
-        TextView about_me = (TextView) findViewById(R.id.about_me);
-        about_me.setText("About Me: " + currentPerson.getAboutMe());
-        setProfilePic(personPhotoUrl);
+//        TextView user_name = (TextView) findViewById(R.id.userName);
+//        user_name.setText("Name: " + personName);
+//        TextView gemail_id = (TextView) findViewById(R.id.emailId);
+//        gemail_id.setText("Email Id: " + email);
+//        TextView dob = (TextView) findViewById(R.id.dob);
+//        dob.setText("DOB: " + currentPerson.getBirthday());
+//        TextView tag_line = (TextView) findViewById(R.id.tag_line);
+//        tag_line.setText("Tag Line: " + currentPerson.getTagline());
+//        TextView about_me = (TextView) findViewById(R.id.about_me);
+//        about_me.setText("About Me: " + currentPerson.getAboutMe());
+        //setProfilePic(personPhotoUrl);
         progress_dialog.dismiss();
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("personName", personName);
+        intent.putExtra("personPhotoUrl", personPhotoUrl);
+        intent.putExtra("email", email);
+        startActivity(intent);
         Toast.makeText(this, "Person information is shown!", Toast.LENGTH_LONG).show();
     }
 
@@ -362,11 +346,11 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     */
 
     private void setProfilePic(String profile_pic) {
-        profile_pic = profile_pic.substring(0,
-                profile_pic.length() - 2)
-                + PROFILE_PIC_SIZE;
-        ImageView user_picture = (ImageView) findViewById(R.id.profile_pic);
-        new LoadProfilePic(user_picture).execute(profile_pic);
+//        profile_pic = profile_pic.substring(0,
+//                profile_pic.length() - 2)
+//                + PROFILE_PIC_SIZE;
+//        ImageView user_picture = (ImageView) findViewById(R.id.profile_pic);
+//        new LoadProfilePic(user_picture).execute(profile_pic);
     }
 
     /*
