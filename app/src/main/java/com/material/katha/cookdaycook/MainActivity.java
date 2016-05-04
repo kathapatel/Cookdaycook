@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
                 + PROFILE_PIC_SIZE;
         View headerLayout =
                 navigationView.inflateHeaderView(R.layout.header);
-        byte[] byteArray=de.add_data();
-        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        //byte[] byteArray=de.add_data();
+        //Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         user_picture = (ImageView) headerLayout.findViewById(R.id.profile_pic);
-        user_picture.setImageBitmap(bmp);
-        //new LoadProfilePic(user_picture).execute(profile_pic);
+        //user_picture.setImageBitmap(bmp);
+       new LoadProfilePic(user_picture).execute(profile_pic);
 
         username = (TextView) headerLayout.findViewById(R.id.username);
         username.setText(b.getString("personName", "user"));
